@@ -7,6 +7,7 @@ specifiers:
   '@types/react-dom': 18.0.10
   '@types/react-syntax-highlighter': ^15.5.6
   axios: ^1.3.3
+  chovrio-track: ^1.2.0
   eslint: 8.34.0
   eslint-config-next: 13.1.6
   next: 13.1.6
@@ -25,6 +26,7 @@ dependencies:
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.10
   axios: 1.3.3
+  chovrio-track: 1.2.0
   eslint: 8.34.0
   eslint-config-next: 13.1.6_7kw3g6rralp5ps6mg3uyzz6azm
   next: 13.1.6_uh2utgby6xxgbzeysj4z6eduvm
@@ -599,6 +601,10 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
+
+  /chovrio-track/1.2.0:
+    resolution: {integrity: sha512-3Adoej6JhW2nlkBbu7/vXE7L4Z9XV3an6YV+T4/MM0bHZ9XC4+cDdOErhfstgaboE2vutPOY/xh4KSLlhzKQ3A==}
+    dev: false
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}

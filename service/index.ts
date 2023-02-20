@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from "axios";
+import { BaseURL } from "@/utils/BaseURL";
 class Request {
   instance: AxiosInstance;
   constructor(config: AxiosRequestConfig) {
@@ -42,10 +43,7 @@ const instance = new Request({
   timeout: 10000,
 });
 const origin = new Request({
-  baseURL:
-    process.env.NODE_ENV === "development"
-      ? process.env.NEXT_PUBLIC_BASEURL_DEV_ORIGIN
-      : process.env.NEXT_PUBLIC_BASEURL_PROD,
+  baseURL: BaseURL,
   timeout: 10000,
 });
 

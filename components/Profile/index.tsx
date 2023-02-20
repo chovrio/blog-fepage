@@ -1,19 +1,16 @@
 import Image from "next/image";
 import { FC, ReactElement } from "react";
 import styles from "@/styles/profile.module.scss";
+import { BaseURL } from "@/utils/BaseURL";
 export interface IProps {
   children?: ReactElement;
 }
 const Profile: FC<IProps> = (props) => {
   const { children } = props;
-  const local =
-    process.env.NODE_ENV === "development"
-      ? process.env.NEXT_PUBLIC_BASEURL_DEV
-      : process.env.NEXT_PUBLIC_BASEURL_PROD;
   return (
     <div className={styles.profile}>
       <Image
-        src={`${local}/avactor/chovrio.jpg`}
+        src={`${BaseURL}/avactor/chovrio.jpg`}
         alt="avactor"
         priority
         width={150}

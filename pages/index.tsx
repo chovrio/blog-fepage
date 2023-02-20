@@ -4,7 +4,7 @@ import Profile from "@/components/Profile";
 import Title from "@/components/Title";
 import { getAllArticle } from "@/service/article";
 import { IArticle } from "@/types/article";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { FC, ReactElement } from "react";
 export interface IProps {
   children?: ReactElement;
@@ -28,12 +28,11 @@ const Home: FC<IProps> = (props) => {
 };
 export default Home;
 Home.displayName = "Home";
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const allArticle = await getAllArticle();
   return {
     props: {
       articles: allArticle.result,
     },
-    revalidate: 60 * 60 * 30,
   };
 };
