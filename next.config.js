@@ -23,7 +23,7 @@ const nextConfig = {
   },
   async rewrites() {
     return [
-      //接口请求 前缀带上/api-text/
+      //接口请求 前缀带上/api/
       {
         source: "/api/:path*",
         destination: `http://127.0.0.1:8000/:path*`,

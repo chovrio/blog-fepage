@@ -10,12 +10,16 @@ import { getTime } from "@/utils/getTime";
 import { usePathname } from "next/navigation";
 import Profile from "@/components/Profile";
 import { getArticleContent } from "@/service/article";
+import Tracker from "chovrio-track";
 import "./index.scss";
+import { BaseURL } from "@/utils/BaseURL";
 const Article = () => {
   const [markdown, setMarkdown] = useState<string>("");
   const [info, setInfo] = useState<any>({});
   const [article, setArticle] = useState<string>("");
+  const [pv, setPv] = useState<number>(0);
   const pathname = usePathname();
+
   useEffect(() => {
     let id = pathname?.split("/")[2] || "";
     setArticle(id);
@@ -25,6 +29,14 @@ const Article = () => {
       getArticleContent(article).then((data) => {
         setMarkdown(data.result.content);
         setInfo(data.result.info);
+        setPv(data.result.pv);
+        new Tracker({
+          requestUrl: BaseURL + "/tracker/atcpv",
+          jsError: true,
+          uuid: "chovrio",
+        }).sendTracker({
+          id: article,
+        });
       });
     }
   }, [article]);
@@ -41,7 +53,7 @@ const Article = () => {
       <div className="title">
         <h2>{info.name}</h2>
         <div className="data">{getTime(info.updateTime)}</div>
-        <div>阅读量:埋点未作</div>
+        <div>阅读量:{pv}</div>
       </div>
       <div className="test">
         <article className="content py-8 prose  prose-h1:mt-8">

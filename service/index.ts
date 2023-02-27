@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from "axios";
-import { BaseURL } from "@/utils/BaseURL";
+import { BaseURL, OriginURL } from "@/utils/BaseURL";
 class Request {
   instance: AxiosInstance;
   constructor(config: AxiosRequestConfig) {
@@ -36,14 +36,11 @@ class Request {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 const instance = new Request({
-  baseURL:
-    process.env.NODE_ENV === "development"
-      ? process.env.NEXT_PUBLIC_BASEURL_DEV
-      : process.env.NEXT_PUBLIC_BASEURL_PROD,
+  baseURL: BaseURL,
   timeout: 10000,
 });
 const origin = new Request({
-  baseURL: BaseURL,
+  baseURL: OriginURL,
   timeout: 10000,
 });
 

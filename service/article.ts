@@ -8,7 +8,6 @@ export const getAllArticle = async () => {
   return res.data;
 };
 export const getArticleContent = async (id: string) => {
-  console.log(id);
   const res = await origin.get({
     url: `/essay/content-fe?name=${process.env.NEXT_PUBLIC_NAME}&id=${id}`,
   });

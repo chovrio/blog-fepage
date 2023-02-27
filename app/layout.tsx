@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Script from "next/script";
 export default function RootLayout({
   children,
@@ -9,7 +9,7 @@ export default function RootLayout({
     <html>
       <head />
       <body>{children}</body>
-      <Script src="/sakura.js"></Script>
+      <Script async src="/sakura.js"></Script>
     </html>
   );
 }

@@ -8,7 +8,7 @@ import Script from "next/script";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div>
-      <Script src="sakura.js"/>
+      <Script async src="sakura.js" />
       <Component {...pageProps} />
     </div>
   );

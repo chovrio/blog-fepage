@@ -2,8 +2,6 @@ import { IArticle } from "@/types/article";
 import { getTime } from "@/utils/getTime";
 import Link from "next/link";
 import { FC, ReactElement, useEffect, useState } from "react";
-import Tracker from "chovrio-track";
-import { BaseURL } from "@/utils/BaseURL";
 export interface IProps {
   children?: ReactElement;
   articles: IArticle[];
@@ -12,13 +10,6 @@ const Articles: FC<IProps> = (props) => {
   const { articles } = props;
   const [showArti, setShowArti] = useState<any[]>([]);
   const [pages, setPages] = useState<any[]>([]);
-  const tracker = new Tracker({
-    requestUrl: BaseURL,
-    extra: { name: process.env.NEXT_PUBLIC_NAME },
-    historyTracker: true,
-    jsError: true,
-  });
-  
   useEffect(() => {
     const arr = articles.slice(0, 3);
     let t: any[] = [];
