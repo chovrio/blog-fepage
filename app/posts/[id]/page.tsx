@@ -10,8 +10,10 @@ import { getTime } from "@/utils/getTime";
 import { usePathname } from "next/navigation";
 import Profile from "@/components/Profile";
 import { getArticleContent } from "@/service/article";
+import Loading from "@/components/Loading";
 import Tracker from "chovrio-track";
 import "./index.scss";
+import "@/styles/loading.scss";
 import { BaseURL } from "@/utils/BaseURL";
 const Article = () => {
   const [markdown, setMarkdown] = useState<string>("");
@@ -41,51 +43,63 @@ const Article = () => {
     }
   }, [article]);
   return (
-    <div className="article">
-      <Head>
-        <title>test</title>
-        <meta name="keywords" content={`${info.name} ${info.author}`} />
-        <meta
-          name="description"
-          content={`${markdown} ${process.env.NEXT_PUBLIC_NAME}的博客`}
-        />
-      </Head>
-      <div className="title">
-        <h2>{info.name}</h2>
-        <div className="data">{getTime(info.updateTime)}</div>
-        <div>阅读量:{pv}</div>
-      </div>
-      <div className="test">
-        <article className="content py-8 prose  prose-h1:mt-8">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
-            components={{
-              code({ inline, className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || "");
-                return !inline && match ? (
-                  <SyntaxHighlighter
-                    // eslint-disable-next-line react/no-children-prop
-                    children={String(children).replace(/\n$/, "")}
-                    style={tomorrow as any}
-                    language={match[1]}
-                    PreTag="div"
-                    {...props}
-                  />
-                ) : (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
-                );
-              },
-            }}
-          >
-            {markdown}
-          </ReactMarkdown>
-        </article>
-        <Profile />
-      </div>
-    </div>
+    <>
+      {markdown === "" ? (
+        <Loading />
+      ) : (
+        <div className="article">
+          <title>{info.name}</title>
+          <meta name="keywords" content={`${info.name} ${info.author}`} />
+          <meta
+            name="description"
+            content={`${markdown} ${process.env.NEXT_PUBLIC_NAME}的博客`}
+          />
+          <Head>
+            <title>{info.name}</title>
+            <meta name="keywords" content={`${info.name} ${info.author}`} />
+            <meta
+              name="description"
+              content={`${markdown} ${process.env.NEXT_PUBLIC_NAME}的博客`}
+            />
+          </Head>
+          <div className="title">
+            <h2>{info.name}</h2>
+            <div className="data">{getTime(info.updateTime)}</div>
+            <div>阅读量:{pv}</div>
+          </div>
+          <div className="test">
+            <article className="content py-8 prose  prose-h1:mt-8">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+                components={{
+                  code({ inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || "");
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        // eslint-disable-next-line react/no-children-prop
+                        children={String(children).replace(/\n$/, "")}
+                        style={tomorrow as any}
+                        language={match[1]}
+                        PreTag="div"
+                        {...props}
+                      />
+                    ) : (
+                      <code className={className} {...props}>
+                        {children}
+                      </code>
+                    );
+                  },
+                }}
+              >
+                {markdown}
+              </ReactMarkdown>
+            </article>
+            <Profile />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 export default Article;

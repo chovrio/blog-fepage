@@ -4,8 +4,14 @@ export interface IProps {
   children?: ReactElement;
 }
 const Down: FC<IProps> = (props) => {
+  const down = () => {
+    window.scrollTo({
+      top: 500,
+      behavior: "smooth",
+    });
+  };
   return (
-    <div className="down">
+    <div onClick={down} className="down">
       <Image src={"/down.png"} alt={"向下"} width={30} height={30} />
     </div>
   );

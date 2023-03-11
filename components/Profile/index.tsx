@@ -1,12 +1,20 @@
 import Image from "next/image";
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import styles from "@/styles/profile.module.scss";
 import { BaseURL } from "@/utils/BaseURL";
+import { getUserInfo } from "@/service/user";
 export interface IProps {
   children?: ReactElement;
 }
 const Profile: FC<IProps> = (props) => {
   const { children } = props;
+  const [info, setInfo] = useState<any>({});
+  useEffect(() => {
+    getUserInfo().then((data) => {
+      console.log(data);
+      setInfo(data.result);
+    });
+  }, []);
   return (
     <div className={styles.profile}>
       <Image
@@ -21,7 +29,7 @@ const Profile: FC<IProps> = (props) => {
       <div className={styles.cates}>
         <div>
           <span>文章</span>
-          <span>2</span>
+          <span>{info.articleNum}</span>
         </div>
         <div>
           <span>标签</span>

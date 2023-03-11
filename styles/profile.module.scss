@@ -44,6 +44,12 @@
       color: #fff;
     }
   }
+  &:hover {
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
+    transition: all 0.3s;
+  }
 }
 @media screen and (min-width: 1000px) and (max-width: 100vw) {
   .profile {

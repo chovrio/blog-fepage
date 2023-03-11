@@ -3,7 +3,7 @@
   height: 100vh;
   background-size: cover;
   background-position: center center;
-  background-image: url(/xia.jpg);
+  background-image: url(/xia.webp);
   color: #fff;
   .title {
     height: 55px;
@@ -30,6 +30,7 @@
     animation: move 1.5s ease infinite alternate;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
   @keyframes move {
     0% {
