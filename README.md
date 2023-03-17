@@ -21,12 +21,14 @@
 - 项目目录结构较完善
 - 移动端适配
 - markdown文档的解析
+- 基于typescript封装axios
 
 # 项目难点
 
 - 状态管理
 - nextjs的配置
 - 一些包在nextjs中会出现的一些问题
+- 基于typescript封装axios
 
 # 线上地址
 
