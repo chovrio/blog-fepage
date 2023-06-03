@@ -11,10 +11,8 @@ import { usePathname } from "next/navigation";
 import Profile from "@/components/Profile";
 import { getArticleContent } from "@/service/article";
 import Loading from "@/components/Loading";
-import Tracker from "chovrio-track";
 import "./index.scss";
 import "@/styles/loading.scss";
-import { BaseURL } from "@/utils/BaseURL";
 const Article = () => {
   const [markdown, setMarkdown] = useState<string>("");
   const [info, setInfo] = useState<any>({});
@@ -32,13 +30,6 @@ const Article = () => {
         setMarkdown(data.result.content);
         setInfo(data.result.info);
         setPv(data.result.pv);
-        new Tracker({
-          requestUrl: BaseURL + "/tracker/atcpv",
-          jsError: true,
-          uuid: "chovrio",
-        }).sendTracker({
-          id: article,
-        });
       });
     }
   }, [article]);

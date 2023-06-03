@@ -11,7 +11,6 @@ const Profile: FC<IProps> = (props) => {
   const [info, setInfo] = useState<any>({});
   useEffect(() => {
     getUserInfo().then((data) => {
-      console.log(data);
       setInfo(data.result);
     });
   }, []);

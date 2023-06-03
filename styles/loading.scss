@@ -4,10 +4,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-}
-.loading {
-  left: 40%;
-  top: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .loading,
 .loading > div {
@@ -16,10 +15,10 @@
 }
 
 .loading {
-  display: block;
   font-size: 0;
   color: #000;
   margin: 30px;
+  margin-bottom: 10%;
 }
 
 .loading.la-dark {
