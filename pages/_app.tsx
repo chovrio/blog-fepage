@@ -15,8 +15,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
         <title>{process.env.NEXT_PUBLIC_TITLE}</title>
       </Head>
-      <Script async src="sakura.js" />
       <Component {...pageProps} />
+      <Script defer src="sakura.js" />
     </div>
   );
 }

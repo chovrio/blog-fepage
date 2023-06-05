@@ -9,7 +9,7 @@ export default function RootLayout({
     <html>
       <head />
       <body>{children}</body>
-      <Script async src="/sakura.js"></Script>
+      <Script defer src="/sakura.js"></Script>
     </html>
   );
 }
